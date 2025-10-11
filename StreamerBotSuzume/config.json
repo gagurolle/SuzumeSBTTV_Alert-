@@ -1,0 +1,22 @@
+{
+  "geminiValues": {
+    "geminiApiKey": "geminiApiKey",
+    "textBaseUrl": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash",
+    "prompt": "Пример сообщения: Начинается стрим по игре - Boshy. Жду вас всех на моей трансляции. Немного переделай это сообщение, чтобы оно отличалось и замени игру на эту: {0}. Если в тексте значение игры {0} - то не используй название игры совсем. Используй чуть более серьезный тон и лаконичные выражения. Не описывай игру а просто приглашай на трансляцию. Можно добавитьэмодзи по желанию. выдай один вариант. Нужен сразу готовый текст. "
+  },
+  "telegramValues": {
+    "token": "tgBotToken",
+    "chatId": "chatId",
+    "adminChatId": "adminUserChatId"
+  },
+  "messageLogic": {
+    "useAi": true,
+    "messageWithAi": "{aiMessage} {twitchUrl}",
+    "messageBaseWithArgs": "Stream online. Game: {0}. {twitch_url}",
+    "messageBase": "Stream online. {twitch_url}",
+    "twitchUrl": "https://www.twitch.tv/pan_suzume"
+  },
+  "systemConfig": {
+    "enableLogging": true
+  }
+}
