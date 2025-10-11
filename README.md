@@ -13,3 +13,5 @@ Send notifications to Telegram when you start your Streaming! Just connect it wi
 <li>Setup your streamer bot trigger with Type - Stream Online (Or create your own logic)</li>
 
 That's All!
+
+<h1>I WILL ADD MORE INFO About installation Later</h1>
