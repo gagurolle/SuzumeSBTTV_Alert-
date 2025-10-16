@@ -24,9 +24,10 @@ Just connect it with Streamer.bot — simple and fast setup!
    ![Streamer.bot Configuration](https://github.com/user-attachments/assets/c3dcc5ff-ba39-42e1-b973-a027f9956343)
 5. Set the **Target** and **Working Directory** fields.  
    Add arguments such as `%game%`, `%user%`, etc.:  
-   ![Arguments Setup](https://github.com/user-attachments/assets/465389f2-73d5-4b5e-80e6-fd6f4144209f)
-6. Edit the configuration file as needed.  
-7. Set up your Streamer.bot trigger with **Type → "Stream Online"** (or create your own logic).
+   ![Arguments Setup](https://github.com/user-attachments/assets/13a9d024-4904-4600-b3eb-dfb24cf33ee8)
+
+7. Edit the configuration file as needed.  
+8. Set up your Streamer.bot trigger with **Type → "Stream Online"** (or create your own logic).
 
 ---
 
