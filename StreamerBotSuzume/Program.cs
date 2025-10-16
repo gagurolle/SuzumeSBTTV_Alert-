@@ -42,6 +42,12 @@ class Program
 
 
                 systemValues = config.GetSection("systemConfig").Get<SystemConfig>();
+
+                if(systemValues!=null && systemValues?.enableLogging != null)
+                {
+                    Logger.enableLogging = (bool)systemValues?.enableLogging!;
+                }
+
                 Logger.LogMessage($"---------New Instance---------");
                 messageLogic = config.GetSection("messageLogic").Get<MessageLogic>();
                 telegramValues = config.GetSection("telegramValues").Get<TelegramValues>();
@@ -55,22 +61,22 @@ class Program
 
 
 
-            //Logger.LogMessage($"twitchUrl {messageLogic?.twitchUrl}");
-            //Logger.LogMessage($"messageBase {messageLogic?.messageBase}");
-            //Logger.LogMessage($"messageWithAi {messageLogic?.messageWithAi}");
-            //Logger.LogMessage($"useAi {messageLogic?.useAi}");
+            Logger.LogMessage($"twitchUrl {messageLogic?.twitchUrl}");
+            Logger.LogMessage($"messageBase {messageLogic?.messageBase}");
+            Logger.LogMessage($"messageWithAi {messageLogic?.messageWithAi}");
+            Logger.LogMessage($"useAi {messageLogic?.useAi}");
 
-            //Logger.LogMessage($"chatId {telegramValues?.chatId}");
-            //Logger.LogMessage($"token {telegramValues?.token}");
+            Logger.LogMessage($"chatId {telegramValues?.chatId}");
+            Logger.LogMessage($"token {telegramValues?.token}");
             //Logger.LogMessage($"adminChatId {telegramValues?.adminChatId}");
 
-            //Logger.LogMessage($"geminiApiKey {geminiValues?.geminiApiKey}");
-            //Logger.LogMessage($"textBaseUrl {geminiValues?.textBaseUrl}");
-            //Logger.LogMessage($"prompt {geminiValues?.prompt}");
+            Logger.LogMessage($"geminiApiKey {geminiValues?.geminiApiKey}");
+            Logger.LogMessage($"textBaseUrl {geminiValues?.textBaseUrl}");
+            Logger.LogMessage($"prompt {geminiValues?.prompt}");
 
 
             //Logger.LogMessage($"logPath {systemValues?.logPath}");
-            //Logger.LogMessage($"enableLogging {systemValues?.enableLogging}");
+            Logger.LogMessage($"enableLogging {systemValues?.enableLogging}");
 
             ////////////////////////////////////////////////////////////////////////////
             if (string.IsNullOrEmpty(messageLogic?.twitchUrl))
@@ -99,10 +105,6 @@ class Program
             if (string.IsNullOrEmpty(telegramValues?.token))
             {
                 Logger.LogMessage("token is null, Telegram will not work");
-            }
-            if (string.IsNullOrEmpty(telegramValues?.adminChatId))
-            {
-                Logger.LogMessage("adminChatId is null, Telegram will not work");
             }
             ////////////////////////////////////////////////////////////////////////////
             if (string.IsNullOrEmpty(geminiValues?.geminiApiKey))
@@ -188,15 +190,14 @@ class Program
                     {
                         messageLogic.messageWithAi = replaceString(messageLogic.messageWithAi, "aiMessage", aiMessage);
                         resultMessage = messageLogic.messageWithAi;
+
+                        TelegramCore.SendMessageToTelegram(aiMessage, telegramValues);
                     }
                 }
                 catch (Exception ex)
                 {
                     Logger.LogError("| Gemini Error - " + ex.Message);
                 }
-
-                TelegramCore.SendMessageToTelegram(aiMessage, telegramValues);
-
             }
             else
             {

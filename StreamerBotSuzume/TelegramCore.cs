@@ -31,13 +31,13 @@ namespace StreamerBotSuzume
         {
             try
             {
-                if (string.IsNullOrEmpty(values?.chatId) || string.IsNullOrEmpty(values?.token) || string.IsNullOrEmpty(values?.adminChatId))
+                if (string.IsNullOrEmpty(values?.chatId) || string.IsNullOrEmpty(values?.token))
                 {
                     Logger.LogMessage("Telegram values are null");
                     return;
                 }
 
-                new TelegramCore(values?.token!, values?.adminChatId!);
+                new TelegramCore(values?.token!);
 
                 Logger.LogMessage(message);
 
