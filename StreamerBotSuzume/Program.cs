@@ -157,17 +157,17 @@ class Program
 
             if (!string.IsNullOrEmpty(messageLogic?.twitchUrl))
             {
-                messageLogic.messageBase = replaceString(messageLogic?.messageBase!, "twitch_url", messageLogic?.twitchUrl!);
+                messageLogic.messageBase = replaceString(messageLogic?.messageBase!, "twitchUrl", messageLogic?.twitchUrl!);
 
                 if (!string.IsNullOrEmpty(messageLogic?.messageBaseWithArgs))
                 {
-                    messageLogic.messageBaseWithArgs = replaceString(messageLogic.messageBaseWithArgs, "twitch_url", messageLogic.twitchUrl);
+                    messageLogic.messageBaseWithArgs = replaceString(messageLogic.messageBaseWithArgs, "twitchUrl", messageLogic.twitchUrl);
                 }
 
 
                 if (messageLogic?.useAi == true && !string.IsNullOrEmpty(messageLogic?.messageWithAi))
                 {
-                    messageLogic.messageWithAi = replaceString(messageLogic.messageWithAi, "twitch_url", messageLogic.twitchUrl);
+                    messageLogic.messageWithAi = replaceString(messageLogic.messageWithAi, "twitchUrl", messageLogic.twitchUrl);
                 }
             }
             #endregion
