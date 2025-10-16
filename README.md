@@ -1,29 +1,47 @@
-# SuzumeSBTTV_Alert
-suzumes streamer bot telegram twitch alert
+# 🐦 SuzumeSBTTV Alert
 
-Send notifications to Telegram when you start your Streaming! Just connect it with streamer.bot 
+**Telegram bot for Twitch stream notifications integrated with [Streamer.bot](https://streamer.bot/).**
 
-<h1>Installation</h1>
-<li>Download dotnet 8 if you dont have it <a href="https://dotnet.microsoft.com/en-us/download/dotnet/8.0">.NET 8</href></li>
-<li>Download latest release or compile it yoursefl</li>
-<li>Unzip to any folder</li>
-<li>Connect with streamer.bot in subactions - Run a programm: <img width="1083" height="943" alt="image" src="https://github.com/user-attachments/assets/f73e46da-e5df-4984-a40b-027848e68ee8" />
-</li>
-<li>Set Target and Working Directory fields. Add any arguments like "%game%", "%user%" and etc... <img width="594" height="570" alt="image" src="https://github.com/user-attachments/assets/465389f2-73d5-4b5e-80e6-fd6f4144209f" /></li>
-<li>Edit config file </li>
-<li>Setup your streamer bot trigger with Type - Stream Online (Or create your own logic)</li>
+This bot sends a message to your Telegram channel or chat when your Twitch stream starts.  
+Just connect it with Streamer.bot — simple and fast setup!
 
-That's All!
+---
 
-<h2>Usage</h2>
-<h1>Gemini</h1>
-if you would like to use AI to create a message - set 
+## 🔗 My Links
+- **Twitch**: https://www.twitch.tv/pan_suzume
+- **Website**: https://deepdungeon.fun/
+- **Discord**: https://discord.com/invite/88SUnpA35K
+- **Telegram**: https://t.me/pan_suzume
+
+---
+
+## 📥 Installation
+
+1. Install [.NET 8](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) if you don’t already have it.  
+2. Download the latest release or compile it from source.  
+3. Unzip the files into any folder.  
+4. In **Streamer.bot**, go to **SubActions → Run a program**:  
+   ![Streamer.bot Configuration](https://github.com/user-attachments/assets/c3dcc5ff-ba39-42e1-b973-a027f9956343)
+5. Set the **Target** and **Working Directory** fields.  
+   Add arguments such as `%game%`, `%user%`, etc.:  
+   ![Arguments Setup](https://github.com/user-attachments/assets/465389f2-73d5-4b5e-80e6-fd6f4144209f)
+6. Edit the configuration file as needed.  
+7. Set up your Streamer.bot trigger with **Type → "Stream Online"** (or create your own logic).
+
+---
+
+## 🚀 Usage
+### 🤖 Gemini AI Integration
+
+To use AI for message generation, set:
+```json
 "messageLogic": {
-    "useAi": true },
-    
-otherwise set "useAi": false;
+    "useAi": true
+}
+```
+otherwise set ``` "useAi": false;```
 
-For proper usage fill this fields in "geminiValues" 
+For proper usage, fill these fields in geminiValues:
 ```
 "geminiValues": {
     "geminiApiKey": "apiKey",
@@ -32,40 +50,80 @@ For proper usage fill this fields in "geminiValues"
   }
 ```
 
-1. Get apiKey its free in base plan: <a href="https://aistudio.google.com/api-keys">Gemini Studio</href></li>
-2. Choose your model and place it in textBaseUrl, i use 2.0, you can use the latest. ex: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash
-3. Create a prompt - the answer form Gemini will be retranslated to you the variable {aiMessage}
+1. Get a **free API key** key: <a href="https://aistudio.google.com/api-keys">Gemini Studio</href></li>
+2. Choose your model and update `textBaseUrl`.  
+   - Example: `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash`
+3. Customize your prompt — the Gemini response will replace `{aiMessage}` in your message template.
 
-<h1>Telegram</h1>
+## 💬 Telegram Setup
 
 1. Create a bot via <a href="https://telegram.me/BotFather">BotFather</a>
-2. Set bot token in "token": "here"
-3. Set "chatId": "@your_chat_name". Just place "@" before your name of the chat, which you can usually see in link: t.me/myChannelName
-4. Add your bot to your channel\chat and give him admin rights
-5. That's all, everything should work fine. Please, make your first runs on test channels.
+2. Set your bot token in the config: `"token": "here"`
+3. Set your chat or channel name: `"chatId": "@your_chat_name"`.  *(Add `@` before your chat name, which you can find in your Telegram link: `t.me/myChannelName`)*  
+4. Add your bot to the channel or chat and grant it **admin rights**. 
+5. That’s all! Everything should work.  
+   It’s recommended to test your setup on a private or test channel first.
 
-<h1>Arguments</h1>
+## ⚙️ Arguments
 
-In fields such as prompt, messageWithAi, messageBaseWithArgs and messageBase you can use arguments. 
-While running application the values will fill the 
-You should use brackets "{0}". 
+You can use arguments in the following fields:
+- `prompt`
+- `messageWithAi`
+- `messageBaseWithArgs`
+- `messageBase`
 
-Technical variables: 
-    {aiMessage} - the message created from Gemini
-    {twitchUrl} - your twitch url
-    {0}, {1}, {2}, {3} ... etc - input arguments, that you defined in console or your streamerbot ("%game%", "%user%", "%date%", "placeany" ... in your streamerbot that will go directly to this app). You can define any number of variables.
-    So, you can create a prompt to ai - "Create a message to invite my followers to watch my game - {0}", send "%game%" from streamerBot and it will be "Create a message to invite my followers to watch my game - Hollow Knight: Silksong".
-    Also it will work in other fields simultaniosly.
+During execution, these placeholders will be replaced with real values.  
+Use curly braces for placeholders like `{0}`, `{1}`, etc. 
 
-<h1>Meaning of the fields</h1>
+### Available Variables:
+| Variable | Description |
+|-----------|-------------|
+| `{aiMessage}` | Message generated by Gemini AI |
+| `{twitchUrl}` | Your Twitch channel URL |
+| `{0}, {1}, {2}, ...` | Custom arguments (e.g. `%game%`, `%user%`, `%date%` from Streamer.bot) |
 
-If you use Ai - the "messageWithAi" field will be translated to Telegram. If not - the "messageBaseWithArgs". If you don't have input args ({0}, {1} etc...) so the app will use "messageBase". 
-In case of any errors, messages will be sent in descending order: First, messageWithAi; if there is an API access error, then messageBaseWithArgs will be sent; if there are no arguments, then messageBase will be sent.
+**Example:**
 
-<h1>Log</h1>
-The log file will contain requests and errors. Log filw will be placed in the app directory. If you would like to disable logging:
+Prompt:
+```
+"Create a message to invite my followers to watch my game - {0}"
+```
 
-  "enableLogging": false
+Streamer.bot sends `%game% = Hollow Knight: Silksong` →  
+Result:  
+> "Create a message to invite my followers to watch my game - Hollow Knight: Silksong"
+
+Arguments work in all fields simultaneously.
+
+---
+
+## 🧩 Field Logic
+
+| Field | Description |
+|--------|-------------|
+| `messageWithAi` | Used when AI is enabled and available |
+| `messageBaseWithArgs` | Used when AI is disabled but arguments exist |
+| `messageBase` | Fallback message when no arguments are provided |
+
+If an error occurs, the bot will attempt to send messages in this order:
+1. `messageWithAi`  
+2. `messageBaseWithArgs`  
+3. `messageBase`
+
+---
+
+## 🪵 Log
+
+All requests and errors are stored in a log file located in the app directory.  
+To disable logging, set:
+
+```json
+"enableLogging": false
+```
+
+---
+
+✅ **Enjoy your automatic Twitch → Telegram notifications!**
 
 
 
