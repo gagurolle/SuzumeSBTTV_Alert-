@@ -18,7 +18,7 @@ Just connect it with Streamer.bot — simple and fast setup!
 ## 📥 Installation
 
 1. Install [.NET 8](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) if you don’t already have it.  
-2. Download the latest release or compile it from source.  
+2. Download the latest release or compile it from source. [Release](https://github.com/gagurolle/SuzumeSBTTV_Alert-/releases/tag/v1) 
 3. Unzip the files into any folder.  
 4. In **Streamer.bot**, go to **SubActions → Run a program**:  
    ![Streamer.bot Configuration](https://github.com/user-attachments/assets/c3dcc5ff-ba39-42e1-b973-a027f9956343)
