@@ -127,4 +127,39 @@ To disable logging, set:
 
 
 
+---
+
+
+config:
+
+```json
+{
+  "geminiValues": {
+    "geminiApiKey": "apiKey",
+    "textBaseUrl": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash",
+    "prompt": "use your own prompt"
+  },
+  "telegramValues": {
+    "token": "token",
+    "chatId": "@yourChannelName"
+  },
+  "messageLogic": {
+    "useAi": true,
+    "messageWithAi": "{aiMessage} {twitchUrl}",
+    "messageBaseWithArgs": "Stream online. Game: {0}. {twitchUrl}",
+    "messageBase": "Stream online. {twitchUrl}",
+    "twitchUrl": "https://www.twitch.tv/pan_suzume"
+  },
+  "systemConfig": {
+    "enableLogging": true
+  }
+}
+```
+
+---
+
+prompt example in Russian: 
+```
+Пример сообщения: Начинается стрим по игре - Boshy. Жду вас всех на моей трансляции. Немного переделай это сообщение, чтобы оно отличалось и замени игру на эту: {0}. Используй чуть более серьезный тон и лаконичные выражения. Не описывай игру а просто приглашай на трансляцию. Можно добавить эмодзи по желанию. выдай один вариант. Нужен сразу готовый текст.
+```
     
